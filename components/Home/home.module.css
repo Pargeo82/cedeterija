@@ -1,0 +1,27 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  max-width: 90%;
+  margin: auto;
+}
+
+.artist {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  border: 1px solid black;
+}
+
+.name {
+  min-width: 25%;
+  padding-left: 1rem;
+}
+
+.tag {
+  padding-right: 1rem;
+}
+
+.genres {
+  min-width: 50%;
+}
