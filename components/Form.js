@@ -9,18 +9,10 @@ export default function Form({ addBarcode }) {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    // addBarcode(message);
-
-    const response = await fetch("/api/test3", {
-      method: "POST",
-      body: JSON.stringify({ message }),
-      headers: {
-        "Content-Type": "application/json",
-      },
-    });
-    const data = await response.json();
-    console.log(message);
-    console.log(data);
+    let barcodeArray = message.toString().split("\n");
+    barcodeArray.pop();
+    addBarcode(barcodeArray);
+    console.log(barcodeArray);
   };
 
   return (
@@ -42,6 +34,17 @@ export default function Form({ addBarcode }) {
     </>
   );
 }
+
+// const response = await fetch("/api/test3", {
+//   method: "POST",
+//   body: JSON.stringify({ message }),
+//   headers: {
+//     "Content-Type": "application/json",
+//   },
+// });
+// const data = await response.json();
+// console.log(message);
+// console.log(data);
 
 // import { useState } from "react";
 

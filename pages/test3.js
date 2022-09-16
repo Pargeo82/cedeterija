@@ -1,17 +1,19 @@
 import { useState } from "react";
 import Form from "../components/Form";
+import DataSWR from "../components/Home/DataSWR";
 
 export default function Form3() {
   const [barcodes, setBarcodes] = useState([]);
 
-  const addBarcode = (barcode) => {
-    setBarcodes([...barcodes, barcode]);
+  const addBarcode = (param) => {
+    setBarcodes(param);
   };
 
   return (
     <>
       <Form addBarcode={addBarcode} />
       <div>{barcodes}</div>
+      <DataSWR />
     </>
   );
 }
