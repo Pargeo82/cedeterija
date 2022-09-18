@@ -12,7 +12,6 @@ export default function Form({ addBarcode }) {
     let barcodeArray = message.toString().split("\n");
     barcodeArray.pop();
     addBarcode(barcodeArray);
-    console.log(barcodeArray);
   };
 
   return (
