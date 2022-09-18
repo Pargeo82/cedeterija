@@ -1,36 +1,31 @@
 import useSWR from "swr";
 
 let auth = "key=xgQxkNRrioLIGQbfRHWD&secret=SGocNjHoIEfInQFIvqFzwlMmzGZPIgpK";
-let api1 = `https://api.discogs.com/database/search?q=794881722228&${auth}`;
 let headers = { "User-Agent": "AlbumDataFetcher/0.2" };
 
+const fetcher = (...urls) => {
+  const f = (url) => fetch(url).then((r) => r.json());
+  return Promise.all(urls.map((url) => f(url)));
+};
+
 export default function DataSWR(params) {
-  console.log(params);
+  const urls = [];
+  params.map((param) => {
+    urls.push(`https://api.discogs.com/database/search?q=${param}&${auth}`);
+  });
 
-  function multiFetcher(params) {
-    return Promise.all(params.map((url) => fetcher(url)));
-  }
-
-  const fetcher = async (url) => {
-    const response = await fetch(`https://api.discogs.com/database/search?q=${url}&${auth}`, {
-      headers,
-    });
-    const data = await response.json();
-    return data;
-  };
-
-  const {
-    data: [data1, data2, data3],
-    error,
-  } = useSWR([url1, url2, url3], multiFetcher);
+  const { data, error } = useSWR(urls, fetcher);
 
   if (error) return <div>Nešto ne valja</div>;
   if (!data) return <div>Loading...</div>;
+  console.log(data[0].results[0]);
+  console.log(data[1].results[0]);
   return (
     <>
-      <div>{data1.results && data1.results[0].title}</div>
-      <div>{data2.results && data2.results[0].title}</div>
-      <div>{data3.results && data3.results[0].title}</div>
+      <div>
+        <p>b</p>b
+      </div>
     </>
   );
 }
+// `https://api.discogs.com/database/search?q=${url}&${auth}`
