@@ -6,7 +6,7 @@ let auth = "key=xgQxkNRrioLIGQbfRHWD&secret=SGocNjHoIEfInQFIvqFzwlMmzGZPIgpK";
 let headers = { "User-Agent": "AlbumDataFetcher/0.2" };
 
 const fetcher = (...urls) => {
-  const f = (url) => fetch(url).then((r) => r.json());
+  const f = (url) => fetch(url, { headers }).then((r) => r.json());
   return Promise.all(urls.map((url) => f(url)));
 };
 

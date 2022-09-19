@@ -25,3 +25,9 @@
 .genres {
   min-width: 50%;
 }
+
+.table {
+  overflow-y: auto;
+  white-space: nowrap;
+  padding: 2rem;
+}

@@ -1,4 +1,4 @@
-import styles from "../components/Home/home.module.css";
+import styles from "../styles/home.module.css";
 
 const defaultAPI = "https://musicbrainz.org/ws/2/artist?query=Rolling+stones&fmt=json";
 const defaultLink = "https://musicbrainz.org/artist/";
