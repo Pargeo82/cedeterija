@@ -12,6 +12,7 @@ export default function Form3() {
   return (
     <>
       <Form addBarcode={addBarcode} />
+      {barcodes.length > 0 && <DataSWR params={barcodes} />}
     </>
   );
 }

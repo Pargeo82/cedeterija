@@ -1,4 +1,6 @@
 import useSWR from "swr";
+import { useState } from "react";
+import TableResponse from "../Home/table";
 
 let auth = "key=xgQxkNRrioLIGQbfRHWD&secret=SGocNjHoIEfInQFIvqFzwlMmzGZPIgpK";
 let headers = { "User-Agent": "AlbumDataFetcher/0.2" };
@@ -8,7 +10,7 @@ const fetcher = (...urls) => {
   return Promise.all(urls.map((url) => f(url)));
 };
 
-export default function DataSWR(params) {
+export default function DataSWR({ params }) {
   const urls = [];
   params.map((param) => {
     urls.push(`https://api.discogs.com/database/search?q=${param}&${auth}`);
@@ -18,14 +20,21 @@ export default function DataSWR(params) {
 
   if (error) return <div>Nešto ne valja</div>;
   if (!data) return <div>Loading...</div>;
-  console.log(data[0].results[0]);
-  console.log(data[1].results[0]);
+  // console.log(`data: ${data}`);
+  // console.log(data[0].results[0]);
+  // console.log(data[1].results[0]);
+
   return (
     <>
+      <TableResponse params={data} />
       <div>
-        <p>b</p>b
+        <p>{data[0].results[0].title}</p>
+      </div>
+      <div>
+        <p>{data[1].results[0].title}</p>
       </div>
     </>
   );
 }
+
 // `https://api.discogs.com/database/search?q=${url}&${auth}`
