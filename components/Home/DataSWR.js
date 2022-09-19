@@ -27,12 +27,6 @@ export default function DataSWR({ params }) {
   return (
     <>
       <TableResponse params={data} />
-      <div>
-        <p>{data[0].results[0].title}</p>
-      </div>
-      <div>
-        <p>{data[1].results[0].title}</p>
-      </div>
     </>
   );
 }
