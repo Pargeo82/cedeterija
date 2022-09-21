@@ -1,5 +1,4 @@
 import useSWR from "swr";
-import { useState } from "react";
 import TableResponse from "../Home/table";
 
 let auth = "key=xgQxkNRrioLIGQbfRHWD&secret=SGocNjHoIEfInQFIvqFzwlMmzGZPIgpK";
@@ -18,11 +17,8 @@ export default function DataSWR({ params }) {
 
   const { data, error } = useSWR(urls, fetcher);
 
-  if (error) return <div>Nešto ne valja</div>;
+  if (error) return <div>Nešto ne valja (moguće previše barcodova)</div>;
   if (!data) return <div>Loading...</div>;
-  // console.log(`data: ${data}`);
-  // console.log(data[0].results[0]);
-  // console.log(data[1].results[0]);
 
   return (
     <>
@@ -30,5 +26,3 @@ export default function DataSWR({ params }) {
     </>
   );
 }
-
-// `https://api.discogs.com/database/search?q=${url}&${auth}`

@@ -30,4 +30,16 @@
   overflow-y: auto;
   white-space: nowrap;
   padding: 2rem;
+  table-layout: fixed;
+  margin-right: 2rem;
+}
+
+.smalltd {
+  width: 8px;
+  max-width: 8px;
+  overflow: hidden;
+}
+
+.small-text-tr {
+  font-size: 0.5rem;
 }
