@@ -1,4 +1,6 @@
-import { titleEnd, media, quantity, netoTezina, stilovi } from "./utils";
+import { media, quantity, netoTezina, stilovi, Naziv2, Naziv3, Naziv } from "./utils";
+import genreWand from "./genreWand";
+import labelWand from "./lableWand";
 import styles from "../../styles/home.module.css";
 
 export default function TableResponse({ params }) {
@@ -12,11 +14,9 @@ export default function TableResponse({ params }) {
         <td></td>
         <td></td>
         <td>{title.results[0].catno}</td>
-        <td>{`${title.results[0].title.split(" - ").shift().toUpperCase()} ${title.results[0].title
-          .split(" - ")
-          .pop()}  ${titleEnd(title)}`}</td>
-        <td>{title.results[0].title.split(" - ").shift().toUpperCase()}</td>
-        <td>{title.results[0].title.split(" - ").pop()}</td>
+        <td>{Naziv(title)}</td>
+        <td>{Naziv2(title)}</td>
+        <td>{Naziv3(title)}</td>
         <td></td>
         <td></td>
         <td></td>
@@ -36,9 +36,9 @@ export default function TableResponse({ params }) {
         <td></td>
         <td></td>
         <td></td>
-        <td>{title.results[0].label[0]}</td>
+        <td>{labelWand(title)}</td>
         <td>{`${media(title)}00${quantity(title)}`}</td>
-        <td>{title.results[0].genre[0]}</td>
+        <td>{genreWand(title)}</td>
         <td>{media(title)}</td>
         <td>{title.results[0].year}</td>
         <td></td>

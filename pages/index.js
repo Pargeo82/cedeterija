@@ -3,13 +3,12 @@ import Form from "../components/Form";
 import DataSWR from "../components/Home/DataSWR";
 import Upute from "../components/Home/upute";
 
-export default function Form3() {
+export default function DiscogsAPI() {
   const [barcodes, setBarcodes] = useState([]);
 
   const addBarcode = (param) => {
     setBarcodes(param);
   };
-
   return (
     <>
       <div className="flex">

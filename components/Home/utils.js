@@ -6,16 +6,16 @@
 
 const titleEnd = function (params) {
   if (params.results[0]["format_quantity"] < 2 || !params.results[0]["format_quantity"]) {
-    return `${params.results[0].format[0]}`;
+    return `${media(params)}`;
   } else {
-    return `${params.results[0].format[0]}${params.results[0]["format_quantity"]}`;
+    return `${media(params)}${params.results[0]["format_quantity"]}`;
   }
 };
 
 const media = function (params) {
   if (params.results[0].format.includes("CD")) {
     return `CD`;
-  } else if (params.results[0].format.includes("LP")) {
+  } else if (params.results[0].format.includes("Vinyl")) {
     return `LP`;
   }
 };
@@ -46,4 +46,41 @@ const stilovi = function (params) {
   return prikazaniStilovi.join(", ");
 };
 
-export { titleEnd, media, quantity, netoTezina, stilovi };
+const Naziv2 = function (params) {
+  let title2 = params.results[0].title.split(" - ").shift().toUpperCase();
+  if (title2 === "VARIOUS") {
+    return (title2 = "VARIOUS ARTISTS");
+  } else if (title2.startsWith("THE")) {
+    return title2
+      .slice(3)
+      .replace(/\*/g, "")
+      .normalize("NFD")
+      .replace(/[\u0300-\u036f]/g, "");
+  }
+  return title2
+    .replace(/\*/g, "")
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "");
+};
+
+const Naziv3 = function (params) {
+  let title3 = params.results[0].title.split(" - ").pop();
+  if (title3.startsWith("The")) {
+    return title3
+      .slice(3)
+      .replace(/\*/g, "")
+      .normalize("NFD")
+      .replace(/[\u0300-\u036f]/g, "");
+  }
+  return title3
+    .replace(/\*/g, "")
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "");
+};
+
+const Naziv = (params) => {
+  let fullTitle = `${Naziv2(params)} ${Naziv3(params)} ${titleEnd(params)}`;
+  return fullTitle.substring(0, 80);
+};
+
+export { media, quantity, netoTezina, stilovi, Naziv2, Naziv3, Naziv };
