@@ -15,21 +15,19 @@ export default function Form({ addBarcode }) {
   };
 
   return (
-    <>
-      <div className="form-container">
-        <form onSubmit={handleSubmit} className="form">
-          <label htmlFor="barcodes"></label>
-          <textarea
-            id="barcodes"
-            name="barcodes"
-            value={message}
-            onChange={handleMessageChange}
-            rows="20"
-            column="30"
-          />
-          <button className="sub-form">Pošalji</button>
-        </form>
-      </div>
-    </>
+    <div className="form-container">
+      <form onSubmit={handleSubmit} className="form">
+        <label htmlFor="barcodes"></label>
+        <textarea
+          id="barcodes"
+          name="barcodes"
+          value={message}
+          onChange={handleMessageChange}
+          rows="20"
+          column="30"
+        />
+        <button className="sub-form">Pošalji</button>
+      </form>
+    </div>
   );
 }
