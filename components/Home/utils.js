@@ -53,12 +53,12 @@ const Naziv2 = function (params) {
   } else if (title2.startsWith("THE")) {
     return title2
       .slice(3)
-      .replace(/\*/g, "")
+      .replace(/[*;]/g, "")
       .normalize("NFD")
       .replace(/[\u0300-\u036f]/g, "");
   }
   return title2
-    .replace(/\*/g, "")
+    .replace(/[*;]/g, "")
     .normalize("NFD")
     .replace(/[\u0300-\u036f]/g, "");
 };

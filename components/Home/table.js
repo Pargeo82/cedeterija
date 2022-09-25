@@ -1,6 +1,6 @@
 import { media, quantity, netoTezina, stilovi, Naziv2, Naziv3, Naziv } from "./utils";
 import genreWand from "./genreWand";
-import labelWand from "./lableWand";
+import labelWand from "./labelWand";
 import styles from "../../styles/home.module.css";
 
 export default function TableResponse({ params }) {
