@@ -3,7 +3,7 @@ export default function Upute() {
     <div>
       <h2>Upute:</h2>
       <ol>
-        <li>Ubaci barcodove</li>
+        <li>Ubaci barcodove iz excelice ili direktno iz wand log-a</li>
         <li>Kopiraj cijelu dobivenu tablicu u excel (mora sadržavati prva 2 reda naslova)</li>
         <li>
           Pročitaj grupu u wandu i upiši recimo: &apos;0262 (mora početi sa apostrofom jer inače
