@@ -1,4 +1,4 @@
-import { media, quantity, netoTezina, stilovi, Naziv2, Naziv3, Naziv } from "./utils";
+import { media, quantity, netoTezina, stilovi, Naziv2, Naziv3, Naziv, webGrupa } from "./utils";
 import genreWand from "./genreWand";
 import labelWand from "./labelWand";
 import styles from "../../styles/home.module.css";
@@ -39,7 +39,7 @@ export default function TableResponse({ params }) {
         <td>{labelWand(title)}</td>
         <td>{`${media(title)}00${quantity(title)}`}</td>
         <td>{genreWand(title)}</td>
-        <td>{media(title)}</td>
+        <td>{webGrupa(title)}</td>
         <td>{title.results[0].year}</td>
         <td></td>
         <td></td>
@@ -67,7 +67,11 @@ export default function TableResponse({ params }) {
         <td></td>
         <td></td>
         <td></td>
-        <td>{`${title.results[0].barcode[0].replace(/\D/g, "")}`}</td>
+        <td>
+          {title.results[0].barcode[0]
+            ? `${title.results[0].barcode[0].replace(/\D/g, "")}`
+            : `${title.results[0].catno.replace(/\D/g, "")}`}
+        </td>
         <td></td>
         <td></td>
         <td></td>

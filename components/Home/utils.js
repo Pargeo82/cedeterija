@@ -1,9 +1,3 @@
-// export default function barcodeInputToArray(params) {
-//   barcodeArray = params.toString().split("\n");
-//   barcodeArray.pop();
-//   return barcodeArray;
-// }
-
 const titleEnd = function (params) {
   if (params.results[0]["format_quantity"] < 2 || !params.results[0]["format_quantity"]) {
     return `${media(params)}`;
@@ -17,6 +11,18 @@ const media = function (params) {
     return `CD`;
   } else if (params.results[0].format.includes("Vinyl")) {
     return `LP`;
+  } else if (params.results[0].format.includes("SACD")) {
+    return `SACD`;
+  }
+};
+
+const webGrupa = function (params) {
+  if (params.results[0].format.includes("CD")) {
+    return `CD`;
+  } else if (params.results[0].format.includes("Vinyl")) {
+    return `LP`;
+  } else if (params.results[0].format.includes("SACD")) {
+    return `CD`;
   }
 };
 
@@ -31,6 +37,8 @@ const netoTezina = function (params) {
     return quantity(params) * 100;
   } else if (media(params) === "LP") {
     return quantity(params) * 400;
+  } else if (media(params) === "SACD") {
+    return quantity(params) * 100;
   }
 };
 
@@ -83,4 +91,4 @@ const Naziv = (params) => {
   return fullTitle.substring(0, 80);
 };
 
-export { media, quantity, netoTezina, stilovi, Naziv2, Naziv3, Naziv };
+export { media, quantity, netoTezina, stilovi, Naziv2, Naziv3, Naziv, webGrupa };

@@ -17,7 +17,7 @@ export default function DataSWR({ params }) {
 
   const { data, error } = useSWR(urls, fetcher);
 
-  if (error) return <div>Nešto ne valja (moguće previše barcodova)</div>;
+  if (error) return <div>Nešto ne valja {error}</div>;
   if (!data) return <div>Loading...</div>;
 
   return (
