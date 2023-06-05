@@ -1,6 +1,14 @@
 import styles from "../styles/home.module.css";
+import { Artist } from "../types";
 
-const defaultAPI = "https://musicbrainz.org/ws/2/artist?query=Rolling+stones&fmt=json";
+type Results = {
+  results: {
+    artists: Artist[];
+  };
+};
+
+const defaultAPI =
+  "https://musicbrainz.org/ws/2/artist?query=Rolling+stones&fmt=json";
 const defaultLink = "https://musicbrainz.org/artist/";
 
 export async function getServerSideProps() {
@@ -13,11 +21,10 @@ export async function getServerSideProps() {
   };
 }
 
-export default function Home({ results }) {
-  console.log(results.artists);
+export default function Home({ results }: Results) {
   return (
     <div className={styles.container}>
-      {results.artists.map((artist) => (
+      {results.artists.map((artist: Artist) => (
         <div key={artist.id} className={styles.artist}>
           <div className={styles.name}>
             <a href={`${defaultLink}${artist.id}`}>

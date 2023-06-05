@@ -1,8 +1,10 @@
-const genreWand = (params) => {
-  let genre = params.results[0].genre[0];
-  let stilovi = [];
-  params.results[0].style &&
-    params.results[0].style.map((stil) => {
+import { Album } from "types";
+
+const genreWand = (params: Album) => {
+  let genre = params.genre[0];
+  const stilovi: string[] = [];
+  params.style &&
+    params.style.map((stil) => {
       stilovi.push(stil);
     });
 

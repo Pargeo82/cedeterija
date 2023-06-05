@@ -1,4 +1,6 @@
-export default function handler(req, res) {
+import { NextApiRequest, NextApiResponse } from "next";
+
+export default function handler(req: NextApiRequest , res: NextApiResponse ) {
   if (req.method === "GET") {
     res.status(200).json("all good");
   } else if (req.method === "POST") {

@@ -1,19 +1,28 @@
-import { media, quantity, netoTezina, stilovi, Naziv2, Naziv3, Naziv, webGrupa } from "./utils";
+import {
+  media,
+  quantity,
+  netoTezina,
+  stilovi,
+  Naziv2,
+  Naziv3,
+  Naziv,
+  webGrupa,
+} from "./utils";
 import genreWand from "./genreWand";
 import labelWand from "./labelWand";
 import styles from "../../styles/home.module.css";
+import { AlbumResult } from "../../types";
 
-export default function TableResponse({ params }) {
-  const existingTitles = params.filter((param) => param.results.length > 0);
-  const Naslovi = existingTitles.map((title) => {
+export default function TableResponse({ results }: AlbumResult) {
+  const Naslovi = results.map((title) => {
     return (
-      <tr key={title.results[0].barcode[0]}>
+      <tr key={title.calledBarcode}>
         <td></td>
         <td></td>
         <td></td>
         <td></td>
         <td></td>
-        <td>{title.results[0].catno}</td>
+        <td>{title.catno}</td>
         <td>{Naziv(title)}</td>
         <td>{Naziv2(title)}</td>
         <td>{Naziv3(title)}</td>
@@ -40,14 +49,14 @@ export default function TableResponse({ params }) {
         <td>{`${media(title)}00${quantity(title)}`}</td>
         <td>{genreWand(title)}</td>
         <td>{webGrupa(title)}</td>
-        <td>{title.results[0].year}</td>
+        <td>{title.year}</td>
         <td></td>
         <td></td>
         <td></td>
         <td></td>
         <td>6</td>
         <td>1</td>
-        <td>{title.results[0].country}</td>
+        <td>{title.country}</td>
         <td></td>
         <td>{stilovi(title)}</td>
         <td></td>
@@ -67,11 +76,7 @@ export default function TableResponse({ params }) {
         <td></td>
         <td></td>
         <td></td>
-        <td>
-          {title.results[0].barcode[0]
-            ? `${title.results[0].barcode[0].replace(/\D/g, "")}`
-            : `${title.results[0].catno.replace(/\D/g, "")}`}
-        </td>
+        <td>{title.calledBarcode}</td>
         <td></td>
         <td></td>
         <td></td>
@@ -113,6 +118,7 @@ export default function TableResponse({ params }) {
       </tr>
     );
   });
+
   return (
     <div className={styles.table}>
       <table>

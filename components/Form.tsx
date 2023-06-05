@@ -1,15 +1,21 @@
 import { useState } from "react";
 
-export default function Form({ addBarcode }) {
+type FormProps = {
+  addBarcodes: (barcodes: string[]) => void;
+};
+
+const Form = ({ addBarcodes }: FormProps) => {
   const [message, setMessage] = useState("");
 
-  const handleMessageChange = (event) => {
+  const handleMessageChange = (
+    event: React.ChangeEvent<HTMLTextAreaElement>
+  ) => {
     setMessage(event.target.value);
   };
 
-  const handleSubmit = async (event) => {
+  const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    let barcodeArray = [];
+    let barcodesArray: string[] = [];
 
     // get string from form and turn it into array so you can do something with each entry
     let barcodeArrayPreArray = message.toString().split("\n");
@@ -25,15 +31,15 @@ export default function Form({ addBarcode }) {
       barcodeArrayPreArray.map((barcode) => {
         let shiftInd = barcode.indexOf(":") + 1;
         barcode = barcode.slice(shiftInd).slice(0, 13).replace(/ /g, "");
-        barcodeArray.push(barcode);
+        barcodesArray.push(barcode);
       });
     } else
       barcodeArrayPreArray.map((barcode) => {
-        barcodeArray.push(barcode);
+        barcodesArray.push(barcode);
       });
 
     // passing data to SWR
-    addBarcode(barcodeArray);
+    addBarcodes(barcodesArray);
   };
 
   return (
@@ -45,11 +51,12 @@ export default function Form({ addBarcode }) {
           name="barcodes"
           value={message}
           onChange={handleMessageChange}
-          rows="20"
-          column="30"
+          rows={20}
         />
         <button className="sub-form">Pošalji</button>
       </form>
     </div>
   );
-}
+};
+
+export default Form;

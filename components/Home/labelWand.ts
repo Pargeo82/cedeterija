@@ -1,5 +1,7 @@
-const labelWand = (params) => {
-  let label = params.results[0].label[0];
+import { Album } from "types";
+
+const labelWand = (params: Album) => {
+  let label = params.label[0];
   if (label.includes("Sony Classical")) {
     return (label = "SONYC");
   } else if (label.includes("Sony")) {
