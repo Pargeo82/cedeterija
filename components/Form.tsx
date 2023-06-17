@@ -40,6 +40,7 @@ const Form = ({ addBarcodes }: FormProps) => {
 
     // passing data to SWR
     addBarcodes(barcodesArray);
+    setMessage("");
   };
 
   return (
