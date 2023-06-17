@@ -37,7 +37,6 @@ export const quantity = (params: Album) => {
 };
 
 export const netoTezina = (params: Album): number => {
-  console.log(params);
   if (media(params) === "CD") {
     return quantity(params) * 100;
   } else if (media(params) === "LP") {
