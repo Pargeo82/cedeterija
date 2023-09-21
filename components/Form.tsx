@@ -30,7 +30,7 @@ const Form = ({ addBarcodes }: FormProps) => {
     if (barcodeArrayPreArray[0].includes("Artikl")) {
       barcodeArrayPreArray.map((barcode) => {
         let shiftInd = barcode.indexOf(":") + 1;
-        barcode = barcode.slice(shiftInd).slice(0, 13).replace(/ /g, "");
+        barcode = barcode.slice(shiftInd).slice(0, 14).replace(/ /g, "");
         barcodesArray.push(barcode);
       });
     } else

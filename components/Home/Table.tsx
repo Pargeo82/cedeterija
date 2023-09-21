@@ -14,6 +14,7 @@ import styles from "../../styles/home.module.css";
 import { AlbumResult } from "../../types";
 
 export default function TableResponse({ results }: AlbumResult) {
+  console.log(results);
   const Naslovi = results.map((title) => {
     return (
       <tr key={title.calledBarcode}>
@@ -46,7 +47,9 @@ export default function TableResponse({ results }: AlbumResult) {
         <td></td>
         <td></td>
         <td>{labelWand(title)}</td>
-        <td>{`${media(title)}00${quantity(title)}`}</td>
+        <td>{`${media(title)}${media(title) === "SACD" ? "" : "00"}${quantity(
+          title
+        )}`}</td>
         <td>{genreWand(title)}</td>
         <td>{webGrupa(title)}</td>
         <td>{title.year}</td>

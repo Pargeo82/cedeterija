@@ -14,6 +14,7 @@ export default function DataSWR({ barcodes }: { barcodes: string[] }) {
   const fetchResults = async () => {
     const results = [];
     for (const barcode of barcodes) {
+      console.log(barcode);
       const url = `https://api.discogs.com/database/search?q=${encodeURIComponent(
         barcode
       )}`;
@@ -28,6 +29,7 @@ export default function DataSWR({ barcodes }: { barcodes: string[] }) {
 
   const { data, error } = useSWR("fetchResults", fetchResults, {
     dedupingInterval: 0,
+    revalidateOnFocus: false,
   });
 
   if (error) return <div>Something went wrong: {error.message}</div>;
