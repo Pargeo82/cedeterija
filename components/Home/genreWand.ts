@@ -20,7 +20,10 @@ const genreWand = (params: Album) => {
       } else genre = "/POP";
       break;
     case "Electronic":
-      if (stilovi && stilovi.includes("Art Rock" || "Pop Rock")) {
+      if (
+        stilovi &&
+        (stilovi.includes("Art Rock") || stilovi.includes("Pop Rock"))
+      ) {
         genre = "/POP";
       } else genre = "/ELEC";
       break;
